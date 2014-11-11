@@ -1,0 +1,29 @@
+{
+  "name": "yupik-mixin-font",
+  "version": "0.0.1",
+  "homepage": "https://github.com/laurentperroteau/yupik-mixin-font",
+  "authors": [
+    "laurentperroteau <laurentperroteau@gmail.com>"
+  ],
+  "description": "Mixins that simplified fonts declarations",
+  "main": "_mixin.font.scss",
+  "keywords": [
+    "grandwazoo",
+    "inuitcss",
+    "oocss",
+    "sass",
+    "scss",
+    "css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "yupik-function": "~0.0.1"
+  }
+}

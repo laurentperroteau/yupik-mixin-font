@@ -1,0 +1,110 @@
+
+// ------------------------ //
+// ::: Yupik Mixin Font ::: //
+// ------------------------ //
+
+
+$yupik-fallback-rem: true !default;
+
+// Construct your own mixin duplicating this example
+// ==================================================
+// @param $fontSize (optional) => font-size in px (without "px")
+// @param $lineHeight (optional) => line-height in px (without "px")
+// @return font-family with options font-style and font-weight... 
+//         and optionally with font-size (rem and px) and line-height (rem and px)...
+// @use: @include sans-italic(15 17);
+
+/*@mixin sans-italic($param: null) {
+
+    // Set your parameters
+    $fontFamily: 'Open Sans', sans-serif;
+    $fontStyle : italic; // set "" if useless
+    $fontWeight: 600; // set "" if useless
+    
+    @include construct-font-mixin($fontFamily, $param, $fontStyle, $fontWeight);
+}*/
+
+
+// Set font-size in REM (and pixels for IE8-)
+// ==========================================
+// @param $fontSize => font-size in px (without "px")
+// @param $lineHeight (optional) => line-height in px (without "px")
+@mixin font-size($param: null) 
+{
+    // Declare and get variables
+    $fontSize: null; $lineHeight: null;
+
+    @if $param              { $fontSize:   nth($param, 1); }
+    @if length($param) >= 2 { $lineHeight: nth($param, 2); }
+
+    @if $yupik-fallback-rem {   
+        font-size: toPx($fontSize);
+    }
+
+    font-size: toRem($fontSize);
+    
+    @if $lineHeight {
+        @include line-height($lineHeight);
+    }
+}
+
+
+// Set line-height in REM (and pixels for IE8-)
+// ============================================
+// @param $lineHeight => line-height in px (without "px")
+@mixin line-height($lineHeight) {
+
+    @if $yupik-fallback-rem {  
+        line-height: toPx($lineHeight);
+    }
+
+    line-height: toRem($lineHeight);
+}
+
+
+// Mixin useful for construct font mixin => see example above
+@mixin construct-font-mixin($fontFamily, $param: null, $style: null, $weight: null) 
+{
+    // Declare all variable (null if empty)
+    @if( $style == "")  { $style:  null }
+    @if( $weight == "") { $weight: null }
+    $fontSize: null; $lineHeight: null; $styleAndWeight: null; $sizesPx: null; $sizesRem: null;
+
+    @if $fontFamily {
+        font-family: $fontFamily;
+    }
+
+    // Split $param list
+    @if $param { 
+        
+        $fontSize: nth($param, 1);
+        @if length($param) >= 2 { $lineHeight: nth($param, 2) }
+    }
+    
+    @if $style {
+        font-style: $style;
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $fontSize and $lineHeight {
+        @include font-size($fontSize $lineHeight);
+    }
+    @else if $fontSize and not $lineHeight {
+        @include font-size($fontSize);
+    }
+    @else if not $fontSize and $lineHeight {
+        @include line-height($lineHeight);
+    }
+
+    // @debug "fontFamily : " $fontFamily;
+    // @debug "style : " $style;
+    // @debug "weight : " $weight;
+    // @debug "fontSize : " $fontSize;
+    // @debug "lineHeight : " $lineHeight;
+    // @debug "styleAndWeight : " $styleAndWeight;
+    // @debug "sizesPx : " $sizesPx;
+    // @debug "sizesRem : " $sizesRem;
+}
