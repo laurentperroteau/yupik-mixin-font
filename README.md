@@ -12,7 +12,7 @@ Install using Bower:
     $ bower install --save yupik-mixin-font
 
 
-Exemples : 
+Exemple : 
 ----------
 
 "font-size" mixin display font-size in pixel (optional) and REM:
@@ -20,12 +20,13 @@ Exemples :
 .font-size {
     @include font-size(15)
 }
+````
 
-Easily create your own mixins for each type of font:
+Easily create your own mixins for each type of font by copying this mixin:
 ````scss 
 @mixin sans-italic($param: null) {
 
-    // Set your parameters for the font-face
+    // Set your parameters
     $fontFamily: 'Open Sans', sans-serif;
     $fontStyle : italic;
     $fontWeight: 600;
@@ -33,14 +34,14 @@ Easily create your own mixins for each type of font:
     @include construct-font-mixin($fontFamily, $param, $fontStyle, $fontWeight);
 }
 
-// Use: first param is call "font-size" mixin and second param "line-height" mixin
+// Use: first param called "font-size" mixin and second param "line-height" mixin
 .class {
     @include sans-italic(15 17);
 }
 ````
 
 Result:
-````
+````css
 .class {
   font-family: "Open Sans", sans-serif;
   font-style: italic;
@@ -53,7 +54,13 @@ Result:
 ````
 
 It's recommended use placeholders:
-````
+````scss
 %font-15 { @include font-size(15) }
 
 %sans-italic { @include sans-italic }
+````
+
+Change settings if you need:
+````scss
+$yupik-fallback-rem: false;
+````
