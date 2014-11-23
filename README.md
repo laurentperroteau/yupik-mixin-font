@@ -12,8 +12,17 @@ Install using Bower:
     $ bower install --save yupik-mixin-font
 
 
+Requirement : 
+-------------
+````css
+html {
+    font-size: 62.5%; /* allows 1em == 10px */
+}
+````
+
+
 Exemple : 
-----------
+---------
 
 "font-size" mixin display font-size in pixel (optional) and REM:
 ````scss
