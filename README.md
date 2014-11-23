@@ -14,9 +14,9 @@ Install using Bower:
 
 Requirement : 
 -------------
-````css
+````scss
 html {
-    font-size: 62.5%; /* allows 1em == 10px */
+    font-size: 62.5%; // allows 1em == 10px
 }
 ````
 
