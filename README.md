@@ -1,11 +1,11 @@
 Yupik Mixin Font
 ================
 
-## reworking in progress !
-
 ### Mixins that simplified fonts declarations
 
->  Work in all browser (using REM with optional pixel fallback).
+> Is part of [Yupik collection of modules](https://github.com/laurentperroteau/yupik)
+
+Work in all browser (using REM with optional pixel fallback).
 
 Install using Bower:
 
@@ -69,7 +69,7 @@ It's recommended use placeholders:
 %sans-italic { @include sans-italic }
 ````
 
-Change settings if you need:
+Disabled pixel if you don't need:
 ````scss
 $yupik-fallback-rem: false;
 ````
