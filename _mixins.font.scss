@@ -4,7 +4,8 @@
 // ------------------------ //
 
 
-$yupik-fallback-rem: true !default;
+$yupik-px:  true !default;
+$yupik-rem: true !default;
 
 // Construct your own mixin duplicating this example
 // ==================================================
@@ -37,11 +38,13 @@ $yupik-fallback-rem: true !default;
     @if $param              { $fontSize:   nth($param, 1); }
     @if length($param) >= 2 { $lineHeight: nth($param, 2); }
 
-    @if $yupik-fallback-rem {   
+    @if $yupik-px {   
         font-size: toPx($fontSize);
     }
-
-    font-size: toRem($fontSize);
+    
+    @if $yupik-rem {  
+        font-size: toRem($fontSize);
+    }
     
     @if $lineHeight {
         @include line-height($lineHeight);
@@ -54,11 +57,13 @@ $yupik-fallback-rem: true !default;
 // @param $lineHeight => line-height in px (without "px")
 @mixin line-height($lineHeight) {
 
-    @if $yupik-fallback-rem {  
+    @if $yupik-px {  
         line-height: toPx($lineHeight);
     }
-
-    line-height: toRem($lineHeight);
+    
+    @if $yupik-rem { 
+        line-height: toRem($lineHeight);
+    }
 }
 
 
