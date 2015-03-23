@@ -69,7 +69,9 @@ It's recommended use placeholders:
 %sans-italic { @include sans-italic }
 ````
 
-Disabled pixel if you don't need:
+Disabled REM or pixel if you don't need:
 ````scss
-$yupik-fallback-rem: false;
+$yupik-font-px: false;
+// or
+$yupik-font-rem: false;
 ````
